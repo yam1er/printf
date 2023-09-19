@@ -85,6 +85,10 @@ int write_string(char *str)
 {
 	int count = 0;
 
+	if (str == NULL)
+	{
+		str = "(null)";
+	}
 	while (*str != '\0')
 	{
 		write(1, str, 1);
