@@ -4,6 +4,9 @@
 
 int write_char(char c);
 int write_string(char *str);
+
+int write_integer(int num);
+
 /**
 * _printf - Custom printf function
 * @format: String format
@@ -13,7 +16,7 @@ int write_string(char *str);
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int count = 0;
+	int count = 0, num;
 	char c, percent = '%', *str;
 
 	if (format == NULL)
@@ -38,7 +41,11 @@ int _printf(const char *format, ...)
 			{
 				write(1, &percent, 1);
 				count++;
-			} else
+			}else if (*format == 'i' || *format == 'd')
+			{
+				num = va_arg(args, int);
+			}
+			else
 			{
 				write(1, format, 1);
 				count++;
@@ -84,4 +91,20 @@ int write_string(char *str)
 		count++;
 	}
 	return (count);
+}
+
+/**
+ * write_integer - hold %i and %d (Mantynou)
+ * @num: number or characters to write to stdout
+ * Return: Number of char send to the stdout
+ */
+
+int write_integer(int num)
+{
+	char buffer[20];
+	int len;
+
+	len = snprintf(buffer, sizeof(buffer), "%d", num);
+	write(1, buffer, len);
+	return (len);
 }
