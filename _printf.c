@@ -33,7 +33,10 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				c = va_arg(args, int);
-				count += write_char(c);
+				if (c)
+				{
+					count += write_char(c);
+				}
 			} else if (*format == 's')
 			{
 				str = va_arg(args, char *);
