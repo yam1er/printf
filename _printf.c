@@ -50,7 +50,7 @@ int _printf(const char *format, ...)
 			{
 				for (i = 0; i < 2; i++)
 				{
-					write(1, format - 1 + i; 1);
+					write(1, format - 1 + i, 1);
 					count++;
 				}
 			}
