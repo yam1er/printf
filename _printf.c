@@ -2,6 +2,8 @@
 #include "main.h"
 #include <unistd.h>
 
+int write_char(char c);
+int write_string(char *str);
 /**
 * _printf - Custom printf function
 * @format: String format
@@ -12,8 +14,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
-	char c, percent = '%';
-	char *str;
+	char c, percent = '%', *str;
 
 	va_start(args, format);
 	while (*format != '\0')
@@ -24,17 +25,11 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				c = va_arg(args, int);
-				write(1, &c, 1);
-				count++;
+				count += write_char(c);
 			} else if (*format == 's')
 			{
 				str = va_arg(args, char *);
-				while (*str != '\0')
-				{
-					write(1, str, 1);
-					str++;
-					count++;
-				}
+				count += write_string(str);
 			} else if (*format == '%')
 			{
 				write(1, &percent, 1);
@@ -52,5 +47,37 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(args);
+	return (count);
+}
+
+/**
+ * write_char - Write char
+ * @c: Char to write
+ * Return: Number of char written
+ */
+int write_char(char c)
+{
+	int  count = 0;
+
+	write(1, &c, 1);
+	count++;
+	return (count);
+}
+
+/**
+ * write_string - Write string to stdout
+ * @str: Pointer to string to write to stdout
+ * Return: Number of char sent to the stdout
+ */
+int write_string(char *str)
+{
+	int count = 0;
+
+	while (*str != '\0')
+	{
+		write(1, str, 1);
+		str++;
+		count++;
+	}
 	return (count);
 }
