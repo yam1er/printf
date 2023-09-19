@@ -48,12 +48,9 @@ int _printf(const char *format, ...)
 				count += write_integer(num);
 			} else
 			{
-				format--;
-				write(1, format, 1);
-				count++;
+				write(1, format - 1, 2);
+				count += 2;
 				format++;
-				write(1, format, 1);
-				count++;
 			}
 		} else
 		{
