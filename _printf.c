@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				c = va_arg(args, int);
-				if (c != '')
+				if (c != '\0')
 				{
 					count += write_char(c);
 				}
