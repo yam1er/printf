@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdarg.h>
 #include "main.h"
 #include <unistd.h>
@@ -41,11 +42,11 @@ int _printf(const char *format, ...)
 			{
 				write(1, &percent, 1);
 				count++;
-			}else if (*format == 'i' || *format == 'd')
+			} else if (*format == 'i' || *format == 'd')
 			{
 				num = va_arg(args, int);
-			}
-			else
+				count += write_integer(num);
+			} else
 			{
 				write(1, format, 1);
 				count++;
