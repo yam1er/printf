@@ -17,7 +17,7 @@ int write_integer(int num);
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int count = 0, num;
+	int count = 0, num, i;
 	char c, percent = '%', *str;
 
 	if (format == NULL)
@@ -48,9 +48,11 @@ int _printf(const char *format, ...)
 				count += write_integer(num);
 			} else
 			{
-				write(1, format - 1, 2);
-				count += 2;
-				format++;
+				for (i = 0; i < 2; i++)
+				{
+					write(1, format - 1 + i; 1);
+					count++;
+				}
 			}
 		} else
 		{
