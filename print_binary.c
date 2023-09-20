@@ -12,7 +12,7 @@
 
 int print_binary(unsigned int num)
 {
-	char buffer[1024];
+	char buffer[32];
 	int i = 0, count;
 
 	if (num == 0)
