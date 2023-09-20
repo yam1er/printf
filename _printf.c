@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format = 'c')
+			if (*format == 'c')
 			{
 				c = va_arg(args, int);
 				count += write_char(c);
