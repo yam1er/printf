@@ -47,7 +47,7 @@ int _printf(const char *format, ...)
 			{
 				num = va_arg(args, int);
 				count += write_integer(num);
-			else if (*format == 'b')
+			} else if (*format == 'b')
 			{
 				num = va_arg(args, unsigned int);
 				count += print_binary(num);
