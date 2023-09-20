@@ -5,7 +5,6 @@
 
 int write_char(char c);
 int write_string(char *str);
-
 int write_integer(int num);
 
 /**
@@ -51,6 +50,10 @@ int _printf(const char *format, ...)
 			{
 				num = va_arg(args, unsigned int);
 				count += print_binary(num);
+			} else if (*format == 'u')
+			{
+				num = va_arg(args, unsigned int);
+				count += write_unsigned_int(num);
 			} else
 			{
 				for (i = 0; i < 2; i++)
@@ -118,22 +121,6 @@ int write_integer(int num)
 	int len;
 
 	len = snprintf(buffer, sizeof(buffer), "%d", num);
-	write(1, buffer, len);
-	return (len);
-}
-
-/**
- * write_unsigned_int - Print unsigned number
- * @num: number to write to output
- * Return: Number of char sent 
- */
-
-int write_unsigned_int(unsigned int num)
-{
-	char buffer[20];
-	int len;
-
-	len = snprintf(buffer, sizeof(buffer), "%u", num);
 	write(1, buffer, len);
 	return (len);
 }
