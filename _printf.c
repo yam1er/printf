@@ -17,7 +17,8 @@ int write_integer(int num);
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int count = 0, num, i;
+	int count = 0, i;
+	unsigned int num;
 	char c, percent = '%', *str;
 
 	if (format == NULL)
@@ -33,10 +34,7 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				c = va_arg(args, int);
-				if (c != '\0')
-				{
-					count += write_char(c);
-				}
+				count += write_char(c);
 			} else if (*format == 's')
 			{
 				str = va_arg(args, char *);
@@ -49,6 +47,10 @@ int _printf(const char *format, ...)
 			{
 				num = va_arg(args, int);
 				count += write_integer(num);
+			else if (*format == 'b')
+			{
+				num = va_arg(args, unsigned int);
+				count += print_binary(num);
 			} else
 			{
 				for (i = 0; i < 2; i++)
