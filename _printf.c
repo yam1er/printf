@@ -121,3 +121,19 @@ int write_integer(int num)
 	write(1, buffer, len);
 	return (len);
 }
+
+/**
+ * write_unsigned_int - Print unsigned number
+ * @num: number to write to output
+ * Return: Number of char sent 
+ */
+
+int write_unsigned_int(unsigned int num)
+{
+	char buffer[20];
+	int len;
+
+	len = snprintf(buffer, sizeof(buffer), "%u", num);
+	write(1, buffer, len);
+	return (len);
+}
