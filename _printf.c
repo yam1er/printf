@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'c')
+			if (*format)
 			{
 				c = va_arg(args, int);
 				count += write_char(c);
@@ -54,9 +54,29 @@ int _printf(const char *format, ...)
 			} else
 			{
 				for (i = 0; i < 2; i++)
+				if (*format == 'c')
 				{
-					write(1, format - 1 + i, 1);
+					c = va_arg(args, int);
+					count += write_char(c);
+				} else if (*format == 's')
+				{
+					str = va_arg(args, char *);
+					count += write_string(str);
+				} else if (*format == '%')
+				{
+					write(1, &percent, 1);
 					count++;
+				} else if (*format == 'i' || *format == 'd')
+				{
+					num = va_arg(args, int);
+					count += write_integer(num);
+				} else
+				{
+					for (i = 0; i < 2; i++)
+					{
+						write(1, format - 1 + i, 1);
+						count++;
+					}
 				}
 			}
 		} else
