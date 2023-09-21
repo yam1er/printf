@@ -68,3 +68,18 @@ int write_small_hexadecimal(unsigned int num)
 	write(1, buffer, len);
 	return (len);
 }
+
+/**
+ * write_big_hexadecimal - print hexadecimal with cap letters
+ * @num: number to output
+ * Return: Number of character printed out
+ */
+int write_big_hexadecimal(unsigned int num)
+{
+	char buffer[20];
+	int len;
+
+	len = snprintf(buffer, sizeof(buffer), "%X", num);
+	write(1, buffer, len);
+	return (len);
+}
