@@ -47,8 +47,24 @@ int write_unsigned_int(unsigned int num)
 {
 	char buffer[20];
 	int len;
-	
+
 	len = snprintf(buffer, sizeof(buffer), "%u", num);
+	write(1, buffer, len);
+	return (len);
+}
+
+/**
+ * write_small_hexadecimal - print hexdecimal with small letter
+ * @num: number to output
+ * Return: Number of caracter
+ */
+
+int write_small_hexadecimal(unsigned int num)
+{
+	char buffer[20];
+	int len;
+
+	len = snprintf(buffer, sizeof(buffer), "%x", num);
 	write(1, buffer, len);
 	return (len);
 }
