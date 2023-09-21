@@ -6,5 +6,6 @@ int print_binary(unsigned int num);
 int write_unsigned_int(unsigned int num);
 int write_small_hexadecimal(unsigned int num);
 int write_big_hexadecimal(unsigned int num);
+int write_octal(unsigned int num);
 
 #endif

@@ -83,3 +83,18 @@ int write_big_hexadecimal(unsigned int num)
 	write(1, buffer, len);
 	return (len);
 }
+
+/**
+ * write_octal - print number in octal
+ * @num: Number to print
+ * Return: Number of character printed out
+ */
+int write_octal(unsigned int num)
+{
+	char buffer[20];
+	int len;
+
+	len = snprintf(buffer, sizeof(buffer), "%o", num);
+	write(1, buffer, len);
+	return (len);
+}
