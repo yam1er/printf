@@ -69,7 +69,7 @@ int _printf(const char *format, ...)
 			} else if (*format == 'S')
 			{
 				str = va_arg(args, char *);
-				count += write_costum_S(str);
+				count += write_custom_S(str);
 			} else
 			{
 				for (i = 0; i < 2; i++)

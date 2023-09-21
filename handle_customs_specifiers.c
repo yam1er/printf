@@ -21,7 +21,7 @@ int write_custom_S(char *str)
 			write(1, str, 1);
 			count++;
 		}
-		str++
+		str++;
 	}
 	return (count);
 }
