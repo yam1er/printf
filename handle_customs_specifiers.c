@@ -2,7 +2,11 @@
 #include <stdio.h>
 #include <unistd.h>
 
-
+/**
+ * write_custom_S - Acustom specifier
+ * @str: Pointer to string
+ * Return: Number of character printed
+ */
 int write_custom_S(char *str)
 {
 	int count;
@@ -24,4 +28,19 @@ int write_custom_S(char *str)
 		str++;
 	}
 	return (count);
+}
+
+/**
+ * write_pointer - Print a pointer value
+ * @p: Pointer
+ * Return: Number of character printed
+ */
+int write_pointer(void *p)
+{
+	char buffer[20];
+	int len;
+
+	len = snprintf(buffer, sizeof(buffer), "%p", p);
+	write(1, buffer, len);
+	return (len);
 }

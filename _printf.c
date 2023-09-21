@@ -19,6 +19,7 @@ int _printf(const char *format, ...)
 	int count = 0, i;
 	unsigned int num;
 	char c, percent = '%', *str;
+	void *p;
 
 	if (format == NULL)
 	{
@@ -70,6 +71,10 @@ int _printf(const char *format, ...)
 			{
 				str = va_arg(args, char *);
 				count += write_custom_S(str);
+			} else if (*format == 'p')
+			{
+				p = va_arg(args, void *);
+				count += write_pointer(p);
 			} else
 			{
 				for (i = 0; i < 2; i++)
