@@ -56,7 +56,7 @@ int _printf(const char *format, ...)
 				count += write_unsigned_int(num);
 			} else if (*format == 'x')
 			{
-				num = var_arg(args, unsigned int);
+				num = va_arg(args, unsigned int);
 				count += write_small_hexadecimal(num);
 			} else
 			{
