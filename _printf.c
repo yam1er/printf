@@ -66,6 +66,10 @@ int _printf(const char *format, ...)
 			{
 				num = va_arg(args, unsigned int);
 				count += write_octal(num);
+			} else if (*format == 'S')
+			{
+				str = va_arg(args, char *);
+				count += write_costum_S(str);
 			} else
 			{
 				for (i = 0; i < 2; i++)
