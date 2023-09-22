@@ -5,7 +5,7 @@
 
 int write_char(char c);
 int write_string(char *str);
-int write_integer(int num);
+int write_integer(int num, char *flags);
 
 /**
 * _printf - Custom printf function
@@ -20,6 +20,7 @@ int _printf(const char *format, ...)
 	unsigned int num;
 	char c, percent = '%', *str;
 	void *p;
+	char *flags;
 
 	if (format == NULL)
 	{
@@ -31,6 +32,9 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+
+			flags = handle_first_flags(format);
+
 			if (*format == 'c')
 			{
 				c = va_arg(args, int);
@@ -46,7 +50,7 @@ int _printf(const char *format, ...)
 			} else if (*format == 'i' || *format == 'd')
 			{
 				num = va_arg(args, int);
-				count += write_integer(num);
+				count += write_integer(num, flags);
 			} else if (*format == 'b')
 			{
 				num = va_arg(args, unsigned int);
@@ -133,15 +137,18 @@ int write_string(char *str)
 /**
  * write_integer - hold %i and %d (Mantynou)
  * @num: number or characters to write to stdout
+ * @flags: flags to handle adress
  * Return: Number of char send to the stdout
  */
 
-int write_integer(int num)
+int write_integer(int num, char *flags)
 {
 	char buffer[20];
 	int len;
 
-	len = snprintf(buffer, sizeof(buffer), "%d", num);
+	len = snprintf(buffer, sizeof(buffer), "%s%d",
+(flags[0] == '+' && num >= 0)
+? "+" : (flags[0] == ' ' && num >= 0) ? " " : "", num);
 	write(1, buffer, len);
 	return (len);
 }
