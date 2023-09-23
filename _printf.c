@@ -80,6 +80,10 @@ int _printf(const char *format, ...)
 			{
 				str = va_arg(args, char *);
 				count += write_rot13(str);
+			} else if (*format == 'r')
+			{
+				str = va_arg(args, char *);
+				count += write_reverse(str);
 			} else
 			{
 				for (i = 0; i < 2; i++)

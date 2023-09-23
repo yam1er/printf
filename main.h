@@ -12,6 +12,7 @@ int write_octal(unsigned int num);
 int write_custom_S(char *str);
 int write_pointer(void *p);
 int write_rot13(char *str);
+int write_reverse(char *str);
 /*char *handle_first_flags(const char *format);*/
 
 #endif
