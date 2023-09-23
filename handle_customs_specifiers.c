@@ -78,3 +78,26 @@ int write_rot13(char *str)
 	}
 	return (count);
 }
+
+/**
+ * write_reverse - Write a string in reverse
+ * @str: Pointer to the string
+ * Return: Number of character printed
+ */
+int write_reverse(char *str)
+{
+	int count = 0, len = 0;
+
+	while (str[len] != '\0')
+	{
+		len++;
+	}
+	len--;
+	while (len >= 0)
+	{
+		write(1, &str[len], 1);
+		len--;
+		count++;
+	}
+	return (count);
+}
