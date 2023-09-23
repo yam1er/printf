@@ -44,3 +44,37 @@ int write_pointer(void *p)
 	write(1, buffer, len);
 	return (len);
 }
+
+/**
+ * write_rot13 - Print a string in Rot13
+ * @str: Pointer to string
+ * Return: Number of character printed
+ */
+int write_rot13(char *str)
+{
+	int i, j, count = 0;
+	char c;
+	char input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		for (j = 0; input[j] != '\0'; j++)
+		{
+			if (str[i]  == input[j])
+			{
+				c = output[j];
+				write(1, &c, 1);
+				count++;
+				break;
+			}
+		}
+		if (!input[j])
+		{
+			c = str[i];
+			write(1, &c, 1);
+			count++;
+		}
+	}
+	return (count);
+}

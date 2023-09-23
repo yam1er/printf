@@ -79,7 +79,7 @@ int _printf(const char *format, ...)
 			} else if (*format == 'R')
 			{
 				str = va_arg(args, char *);
-				count += write_rot13(str);i;
+				count += write_rot13(str);
 			} else
 			{
 				for (i = 0; i < 2; i++)
